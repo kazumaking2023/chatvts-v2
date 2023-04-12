@@ -25,7 +25,8 @@ io.on("connection", async (socket) => {
     for (const peer of searching) {
       if (peer.id !== id) {
         searching.delete(peer);
-        notAvailable.add(socket, peer);
+        notAvailable.add(socket);
+        notAvailable.add(peer);
         const roomName = `${id}#${peer.id}`;
         rooms.set(roomName, new Set([socket, peer]));
         [socket, peer].forEach((s) => {
